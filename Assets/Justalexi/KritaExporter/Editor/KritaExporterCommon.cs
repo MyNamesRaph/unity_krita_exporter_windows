@@ -35,7 +35,7 @@ namespace Justalexi.KritaExporter.Editor
         private const string PngFileNameInsideKraArchive = "mergedimage.png";
 
         // In Windows and MacOS this can be a different program
-        private const string ProcessName = "bash";
+        private const string ProcessName = "powershell";
 
         // x Extract with full paths
         // -aoa Overwrite All existing files without prompt
