@@ -8,7 +8,7 @@ This editor plugin listens for changes in krita files, gets "mergedimage.png" ou
 
 Usage:
 1. Copy the repository to your Unity project.
-2. Add path to 7z to path variables, or update 'ExtractCommand' variable in 'KritaExporterCommon.cs' to reflect location of your file archiver.
+2. Update 'ProcessName' variable in 'KritaExporterCommon.cs' to reflect location of your file archiver.
 
 If all goes well, then every time you change kra files, Unity will create png files next to them. 
 
