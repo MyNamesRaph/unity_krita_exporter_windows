@@ -35,12 +35,12 @@ namespace Justalexi.KritaExporter.Editor
         private const string PngFileNameInsideKraArchive = "mergedimage.png";
 
         // In Windows and MacOS this can be a different program
-        private const string ProcessName = "powershell";
+        private const string ProcessName = "C:\\Program Files\\7-Zip\\7z.exe";
 
         // x Extract with full paths
         // -aoa Overwrite All existing files without prompt
         // -o -o{Directory} Set Output directory // NO SPACE AFTER -o
-        private const string ExtractCommand = "7z x -aoa \"[FullName]\" -o\"[Directory]\" [PngFileNameInsideKraArchive]";
+        private const string ExtractCommand = "x -aoa \"[FullName]\" -o\"[Directory]\" [PngFileNameInsideKraArchive]";
 
 
         public static bool ExportKritaFile(FileInfo kraFile)
@@ -50,17 +50,13 @@ namespace Justalexi.KritaExporter.Editor
                 .Replace("[Directory]", kraFile.Directory?.ToString())
                 .Replace("[PngFileNameInsideKraArchive]", PngFileNameInsideKraArchive);
 
-            Process process = Process.Start(ProcessName, command);
-            if (process != null)
-            {
-                process.WaitForExit();
-                process.Close();
-            }
-            else
-            {
-                Debug.LogError("KritaExporterCommon.ExportKritaFile: ERROR! 'process' is null");
-                return false;
-            }
+            Process process = new Process();
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.FileName = ProcessName;
+            process.StartInfo.Arguments = command;
+
+            process.Start();
+            process.WaitForExit();
 
             var pngFileFromKra = new FileInfo(kraFile.Directory + "/" + PngFileNameInsideKraArchive);
 
