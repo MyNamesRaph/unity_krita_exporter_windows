@@ -12,4 +12,4 @@ Usage:
 
 If all goes well, then every time you change kra files, Unity will create png files next to them. 
 
-!WARNING! This was tested in Linux Mint, so be ready to dive into code a bit during development on Windows or MacOS.
+!WARNING! This was tested in Windows 10, refer to original fork for Linux or MacOS
